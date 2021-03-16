@@ -54,7 +54,7 @@ print('Test set shape : ', x_test.shape)
 x_test = x_test.astype('float32')/255
 
 # load model
-model = load_model('../Models/fruits_keras_model3.h5')
+model = load_model('../Models/fruits_keras_model7.h5')
 # evaluate model on test dataset
 # loss,accuracy, other metrics...
 _, acc, k_acc = model.evaluate(x_test, y_test, verbose=0)
