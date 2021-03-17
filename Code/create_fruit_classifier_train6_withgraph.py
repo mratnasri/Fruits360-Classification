@@ -10,6 +10,7 @@ from keras.layers import Dense, Activation, Conv2D, MaxPooling2D, Dense, Flatten
 from keras.optimizers import SGD
 from sklearn.model_selection import train_test_split
 from numpy import mean, std
+from matplotlib import pyplot as plt
 
 # 100x100 images
 # 131 classes

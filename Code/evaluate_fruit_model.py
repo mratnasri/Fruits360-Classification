@@ -76,7 +76,8 @@ print(report)
 """f1 = f1_score(y_test, pred_class,average='macro')
 print("f1 score: ", f1)"""
 confusionMatrix = confusion_matrix(y_test, pred_class)
-print("Confusion matrix: ", confusionMatrix)
+print("Confusion matrix: ")
+print(confusionMatrix)
 
 """# loss,accuracy, other metrics...
 _, acc, k_acc = model.evaluate(x_test, y_test_ohe, verbose=0)
