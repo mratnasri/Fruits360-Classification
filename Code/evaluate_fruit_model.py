@@ -5,7 +5,9 @@ import numpy as np
 from keras.models import load_model
 from keras.utils import to_categorical
 from keras.preprocessing.image import array_to_img, img_to_array, load_img
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, top_k_accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, top_k_accuracy_score, ConfusionMatrixDisplay
+import sys
+from matplotlib import pyplot as plt
 
 #test_dir = '../../trial data/Test'
 test_dir = '../../fruits-360/Test'
@@ -34,7 +36,7 @@ def load_dataset(path):
     return filenames, targets, target_labels
 
 
-x_test, y_test, _ = load_dataset(test_dir)
+x_test, y_test, target_labels = load_dataset(test_dir)
 y_test_ohe = to_categorical(y_test, categories_n)
 
 # preprocessing
@@ -75,9 +77,16 @@ print("Classification Report: ")
 print(report)
 """f1 = f1_score(y_test, pred_class,average='macro')
 print("f1 score: ", f1)"""
-confusionMatrix = confusion_matrix(y_test, pred_class)
+confusionMatrix = confusion_matrix(
+    y_test, pred_class)  # row(true), column(predicted)
+np.set_printoptions(threshold=sys.maxsize)
 print("Confusion matrix: ")
 print(confusionMatrix)
+np.set_printoptions(threshold=False)
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=confusionMatrix, display_labels=target_labels)
+disp.plot()
+plt.show()
 
 """# loss,accuracy, other metrics...
 _, acc, k_acc = model.evaluate(x_test, y_test_ohe, verbose=0)

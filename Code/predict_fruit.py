@@ -29,7 +29,7 @@ def run_example():
     # load the image
     img = load_image('../../sample_fruit.jpg')
     # load model
-    model = load_model('../Models/fruits_keras_model2.h5')
+    model = load_model('../Models/fruits_keras_model6.h5')
     # load label_names
     data_loading = load_files(test_dir)
     target_labels = np.array(data_loading['target_names'])
